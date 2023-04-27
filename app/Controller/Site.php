@@ -45,9 +45,8 @@ class Site
         Auth::logout();
         app()->route->redirect('/hello');
     }
-    public function profile(Request $request): string
+    public function profile(): string
     {
-
         $users = User::all();
         return (new View())->render('site.profile', ['users' => $users]);
     }

@@ -11,7 +11,7 @@
 <header>
     <nav>
         <h1 class="Logo"><a href="<?= app()->route->getUrl('/hello') ?>">У-МУ</a></h1>
-        <div>
+        <div class="navi">
             <?php
             if (app()->auth::check()):
             ?>

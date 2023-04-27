@@ -30,6 +30,7 @@ nav{
     height: 150px;
     align-items: center;
 }
+
 .Logo{
     font-family: Manrope-Bold;
     color: #0A2640;
@@ -40,7 +41,32 @@ nav{
     text-decoration: none;
     color: #0A2640;
 }
+.navi{
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+    align-items: center;
 
+}
+.navi>p{
+
+    font-family: OpenSans-Bold;
+    font-size: 16pt;
+    width: 140px;
+    height: 40px;
+    display: flex;
+    color: #0A2640;
+    justify-content: center;
+    align-items: center;
+    border: #0A2640 2px solid;
+    border-radius: 24px;
+}
+.navi>a{
+    text-decoration: none;
+    font-family: OpenSans-Bold;
+    font-size: 16pt;
+    color: #0A2640;
+}
 .Info{
     display: flex;
     justify-content: space-between;
@@ -78,6 +104,20 @@ nav{
     font-size: 20px;
     justify-content: center;
 }
+.btm1{
+    text-decoration: none;
+    color: white;
+    background: #0A2640;
+    width: 350px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-radius: 56px;
+
+    font-family: OpenSans-Bold;
+    font-size: 20px;
+    justify-content: center;
+}
 .Info>img{
     width: 500px;
     height: 450px;
@@ -102,14 +142,14 @@ nav{
     color: red;
     margin: 0px 0px -30px 70px;
 }
-.login>label{
+.login>label, .sign>label{
     font-family: OpenSans-Bold;
     font-size: 20px;
     justify-content: center;
     color: white;
     margin: 0px 0px -30px 70px;
 }
-.login>input{
+.login>input, .sign>input{
     width: 530px;
     height: 60px;
     border-radius: 24px;
@@ -117,7 +157,7 @@ nav{
     font-size: 20pt;
     padding-left: 20px;
 }
-.login>button{
+.login>button, .sign>button{
     width: 170px;
     height: 60px;
     display: flex;
@@ -128,4 +168,17 @@ nav{
     border: #0A2640 2px solid;
     justify-content: center;
     margin-left: 40px;
+}
+.sign{
+    border-radius: 24px;
+    background: #3B5166;
+    display: flex;
+    flex-direction: column;
+    height: 1300px;
+    width: 620px;
+    align-items: flex-start;
+    align-content: space-around;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    margin-bottom:100px ;
 }

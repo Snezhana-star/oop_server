@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Src\Auth\IdentityInterface;
 
 class User extends Model implements IdentityInterface
-
 {
     use HasFactory;
 
@@ -30,6 +29,7 @@ class User extends Model implements IdentityInterface
             $user->save();
         });
     }
+
     //Выборка пользователя по первичному ключу
     public function findIdentity(int $id)
     {
@@ -46,7 +46,6 @@ class User extends Model implements IdentityInterface
     public function attemptIdentity(array $credentials)
     {
         return self::where(['login' => $credentials['login'],
-            'password' => md5($credentials['password'])])->first();
+            'password' =>$credentials['password']])->first();
     }
-
 }
