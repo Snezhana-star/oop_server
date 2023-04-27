@@ -15,7 +15,7 @@
             <?php
             if (app()->auth::check()):
             ?>
-            <p><?= app()->auth::user(); ?></p>
+            <p><?= app()->auth::user()->pole; ?></p>
             <a href="<?= app()->route->getUrl('/logout') ?>">Выход</a>
             <?php
             endif;

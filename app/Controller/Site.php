@@ -1,6 +1,6 @@
 <?php
 namespace Controller;
-use Model\Worker;
+
 use Src\Request;
 use Model\Post;
 use Src\View;
@@ -48,8 +48,8 @@ class Site
     public function profile(Request $request): string
     {
 
-        $workers = Worker::all();
-        return (new View())->render('site.profile', ['workers' => $workers]);
+        $users = User::all();
+        return (new View())->render('site.profile', ['users' => $users]);
     }
 
 }
