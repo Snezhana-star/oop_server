@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+@font-face{
+    font-family: Manrope-Bold; 
+	src: url(../fonts/Manrope-Bold.woff);
+}
+@font-face{
+    font-family: Manrope-Regular; 
+	src: url(../fonts/Manrope-Regular.woff);
+}
+@font-face{
+    font-family: OpenSans-Bold; 
+	src: url(../fonts/OpenSans-Bold.woff);
+}
+@font-face{
+    font-family: OpenSans-Regular; 
+	src: url(../fonts/OpenSans-Regular.woff);
+}
+body{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    margin: 0 auto;
+    height: 150px;
+    align-items: center;
+}
+.Logo{
+    font-family: Manrope-Bold;
+    color: #0A2640;
+    font-size: 43px;
+}
+.Info{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.Info>div{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+    width: 500px;
+}
+.Info>div>p:first-child{
+    font-size: 48px;
+    font-family:Manrope-Regular ;
+}
+
+.cn{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    font-family:OpenSans-Regular ;
+}
+.btm{
+    text-decoration: none;
+    color: white;
+    background: #0A2640;
+    width: 170px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-radius: 56px;
+
+    font-family: OpenSans-Bold;
+    font-size: 20px;
+    justify-content: center;
+}
+.Info>img{
+    width: 500px;
+    height: 450px;
+    border-radius: 24px;
+}
+.login{
+    border-radius: 24px;
+    background: #3B5166;
+    display: flex;
+    flex-direction: column;
+    height: 460px;
+    width: 620px;
+    align-items: flex-start;
+    align-content: space-around;
+    justify-content: space-evenly;
+}
+.login>label{
+    font-family: OpenSans-Bold;
+    font-size: 20px;
+    justify-content: center;
+    color: white;
+    margin: 0px 0px -30px 70px;
+}
+.login>input{
+    width: 530px;
+    height: 60px;
+    border-radius: 24px;
+    margin-left: 40px;
+}
+.login>button{
+    width: 170px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-radius: 56px;
+    font-family: OpenSans-Bold;
+    font-size: 20px;
+    border: #0A2640 2px solid;
+    justify-content: center;
+    margin-left: 40px;
+}
