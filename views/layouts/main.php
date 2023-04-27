@@ -5,13 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>У-МУ</title>
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="../../public/assets/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <header>
     <nav>
-        <h1 class="Logo">У-МУ</h1>
-        <div></div>
+        <h1 class="Logo"><a href="<?= app()->route->getUrl('/hello') ?>">У-МУ</a></h1>
+        <div>
+            <?php
+            if (app()->auth::check()):
+            ?>
+            <p><?= app()->auth::user(); ?></p>
+            <a href="<?= app()->route->getUrl('/logout') ?>">Выход</a>
+            <?php
+            endif;
+            ?>
+        </div>
     </nav>
 
 </header>

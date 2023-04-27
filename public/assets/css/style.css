@@ -22,7 +22,6 @@ body{
     width: 1200px;
     margin: 0 auto;
 }
-
 nav{
     display: flex;
     justify-content: space-between;
@@ -35,7 +34,13 @@ nav{
     font-family: Manrope-Bold;
     color: #0A2640;
     font-size: 43px;
+
 }
+.Logo>a{
+    text-decoration: none;
+    color: #0A2640;
+}
+
 .Info{
     display: flex;
     justify-content: space-between;
@@ -88,6 +93,14 @@ nav{
     align-items: flex-start;
     align-content: space-around;
     justify-content: space-evenly;
+    margin-top: 50px;
+}
+.error{
+    font-family: OpenSans-Bold;
+    font-size: 20px;
+    justify-content: center;
+    color: red;
+    margin: 0px 0px -30px 70px;
 }
 .login>label{
     font-family: OpenSans-Bold;
@@ -101,6 +114,8 @@ nav{
     height: 60px;
     border-radius: 24px;
     margin-left: 40px;
+    font-size: 20pt;
+    padding-left: 20px;
 }
 .login>button{
     width: 170px;

@@ -1,5 +1,6 @@
 <?php
 namespace Controller;
+use Model\Worker;
 use Src\Request;
 use Model\Post;
 use Src\View;
@@ -16,7 +17,7 @@ class Site
 
     public function hello(): string
     {
-        return new View('site.hello', ['message' => 'hello working']);
+        return new View('site.hello');
     }
     public function signup(Request $request): string
     {
@@ -33,10 +34,10 @@ class Site
         }
         //Если удалось аутентифицировать пользователя, то редирект
         if (Auth::attempt($request->all())) {
-            app()->route->redirect('/hello');
+            app()->route->redirect('/profile');
         }
         //Если аутентификация не удалась, то сообщение об ошибке
-        return new View('site.login', ['message' => 'Неправильные логин или пароль']);
+        return new View('site.login', ['message' => 'НеправильныЙ логин или пароль']);
     }
 
     public function logout(): void
@@ -44,6 +45,11 @@ class Site
         Auth::logout();
         app()->route->redirect('/hello');
     }
+    public function profile(Request $request): string
+    {
 
+        $workers = Worker::all();
+        return (new View())->render('site.profile', ['workers' => $workers]);
+    }
 
 }
