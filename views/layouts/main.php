@@ -1,3 +1,8 @@
+<?php
+
+use Src\Auth\Auth;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +20,10 @@
             <?php
             if (app()->auth::check()):
             ?>
-            <p><?= app()->auth::user()->pole; ?></p>
+            <p><?= app()->auth::user()->role; ?></p>
+                <?php if (Auth::user()->role === 'Админ'): ?>
+                <a href="#">Регистрация</a>
+            <?php endif; ?>
             <a href="<?= app()->route->getUrl('/logout') ?>">Выход</a>
             <?php
             endif;

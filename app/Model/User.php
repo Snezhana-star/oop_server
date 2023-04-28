@@ -41,11 +41,17 @@ class User extends Model implements IdentityInterface
     {
         return $this->id;
     }
-
     //Возврат аутентифицированного пользователя
     public function attemptIdentity(array $credentials)
     {
         return self::where(['login' => $credentials['login'],
             'password' =>$credentials['password']])->first();
+    }
+    public function role(){
+        return $this->belongsTo(Role::class, 'pole', 'title' );
+
+    }
+    public function hasRole($roles): bool{
+         return in_array($this->role, $roles);
     }
 }
