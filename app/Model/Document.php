@@ -30,10 +30,10 @@ class Document extends Model //implements IdentityInterface
         });
     }
     //Выборка пользователя по первичному ключу
-    public function findIdentity(int $id)
-    {
-        return self::where('id', $id)->first();
-    }
+//    public function findIdentity(int $id)
+//    {
+//        return self::where('id', $id)->first();
+//    }
 
     //Возврат первичного ключа
     public function getId(): int

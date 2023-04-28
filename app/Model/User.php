@@ -16,8 +16,8 @@ class User extends Model implements IdentityInterface
         'sex',
         'date_of_birth',
         'address',
-        'pole',
-        'subdivision ',
+        'role',
+        'subdivision',
         'login',
         'password'
     ];
@@ -45,10 +45,10 @@ class User extends Model implements IdentityInterface
     public function attemptIdentity(array $credentials)
     {
         return self::where(['login' => $credentials['login'],
-            'password' =>$credentials['password']])->first();
+            'password' =>md5($credentials['password'])])->first();
     }
     public function role(){
-        return $this->belongsTo(Role::class, 'pole', 'title' );
+        return $this->belongsTo(Role::class, 'role', 'title' );
 
     }
     public function hasRole($roles): bool{

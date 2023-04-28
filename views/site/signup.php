@@ -6,8 +6,11 @@
     <label for="full_name">ФИО </br></label>
     <input type="text" name="full_name">
 
-    <label for="sex">Пол </br></label>
-    <input type="checkbox" name="sex">
+    <label for="sex">Пол</br></label>
+        <select id="sex" name="sex">
+            <option value="Мужской">Мужской</option>
+            <option value="Женский">Женский</option>
+        </select>
 
     <label for="date_of_birth">Дата рождения </br></label>
     <input type="date" name="date_of_birth">
@@ -15,11 +18,18 @@
     <label for="address">Адрес регистрации </br></label>
     <input type="text" name="address">
 
-    <label for="pole">Роль</br></label>
-    <input type="checkbox" name="pole">
+    <label for="role">Роль</br></label>
+    <select id="role" name="role">
+        <option value="Админ">Админ</option>
+        <option value="Методист">Методист</option>
+        <option value="Преподаватель">Преподаватель</option>
+    </select>
 
     <label for="subdivision">Подразделение</br></label>
-    <input type="checkbox" name="subdivision">
+    <select id="subdivision" name="subdivision">
+        <option value="Филологическое">Филологическое</option>
+        <option value="Экономическое">Экономическое</option>
+    </select>
 
     <label for="login">Логин </br></label>
     <input type="text" name="login">

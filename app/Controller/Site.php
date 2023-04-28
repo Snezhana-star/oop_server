@@ -1,6 +1,7 @@
 <?php
 namespace Controller;
 
+use Model\Document;
 use Src\Request;
 use Model\Post;
 use Src\View;
@@ -22,7 +23,7 @@ class Site
     public function signup(Request $request): string
     {
         if ($request->method==='POST' && User::create($request->all())){
-            app()->route->redirect('/hello');
+            app()->route->redirect('/login');
         }
         return new View('site.signup');
     }
@@ -45,10 +46,20 @@ class Site
         Auth::logout();
         app()->route->redirect('/hello');
     }
-    public function profile(): string
+    public function profile(Request $request): string
     {
+        $documents = Document::all();
+//        $statusNew = Document::where('status', $request->status)->get();
         $users = User::all();
-        return (new View())->render('site.profile', ['users' => $users]);
+        return (new View())->render('site.profile', ['users' => $users,'documents'=>$documents]);
     }
+    public function createDoc(Request $request): string
+        {
+            if ($request->method==='POST' && Document::create($request->all())){
+                app()->route->redirect('/profile');
+            }
+            return new View('site.createDoc');
+        }
+
 
 }
