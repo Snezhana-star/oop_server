@@ -18,7 +18,7 @@ class Document extends Model //implements IdentityInterface
         'text',
         'status',
         'date_of_creation',
-        'author ',
+        'author',
         'subdivision',
         'discipline'
     ];

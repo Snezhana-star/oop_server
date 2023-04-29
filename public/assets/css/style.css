@@ -195,6 +195,34 @@ nav{
     color: #0A2640;
     padding-left: 20px;
 }
-.doc{
+.doc>p{
+    margin-top: 100px;
+    font-size: 48px;
+    font-family: Manrope-Regular;
 
+}
+.doc>div{
+    margin-top: 30px;
+}
+.doc>div>a{
+    margin-right: 30px;
+    text-decoration: none;
+    font-size: 16pt;
+    font-family: OpenSans-Bold;
+    color: #0A2640;
+
+}
+.list{
+    margin-left: 20px;
+    margin-bottom: 100px;
+}
+.list>ol>a{
+    text-decoration: none;
+
+}
+.list>ol>a>li{
+    margin-bottom: 20px;
+    font-size: 14pt;
+    font-family: Manrope-Regular;
+    color: #0A2640;
 }

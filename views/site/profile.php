@@ -21,7 +21,7 @@ use Src\Auth\Auth;
     <img src="../../public/assets/image/книги.jpg" alt="Книги">
     </div>
     <div class="doc">
-        <h2>Документы</h2>
+        <p>Документы</p>
         <div>
 <!--            --><?php //foreach ($documents as $document)?>
             <a href="#">Все</a>
