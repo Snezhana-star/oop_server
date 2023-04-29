@@ -60,6 +60,10 @@ class Site
             }
             return new View('site.createDoc');
         }
+    public function viewDoc(Request $request): string{
+        $viewdocs = Document::where('id', $request->id)->get();
+        return (new View())->render('site.viewdoc', ['viewdocs' => $viewdocs]);
+    }
 
 
 }

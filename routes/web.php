@@ -8,3 +8,5 @@ Route::add(['GET', 'POST'], '/signup', [Controller\Site::class, 'signup'])->midd
 Route::add(['GET', 'POST'], '/createDoc', [Controller\Site::class, 'createDoc'])->middleware('auth','role:Методист');
 Route::add(['GET', 'POST'], '/login', [Controller\Site::class, 'login']);
 Route::add('GET', '/logout', [Controller\Site::class, 'logout'])->middleware('auth');
+Route::add('GET', '/viewDoc', [Controller\Site::class, 'viewDoc'])->middleware('auth');
+

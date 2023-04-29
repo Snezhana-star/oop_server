@@ -226,3 +226,22 @@ nav{
     font-family: Manrope-Regular;
     color: #0A2640;
 }
+.stat{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    font-family: OpenSans-Regular;
+}
+.textdoc{
+    margin-top: 100px;
+    background: #F1F1F1;
+    margin-bottom: 100px;
+    border-radius: 24px;
+}
+.textdoc>p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    font-family: OpenSans-Regular;
+    padding: 30px;
+}

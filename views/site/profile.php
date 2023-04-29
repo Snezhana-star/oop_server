@@ -33,7 +33,7 @@ use Src\Auth\Auth;
         <ol>
             <?php
             foreach ($documents as $document){
-                echo '<a href=' . app()->route->getUrl('/createDoc') . '>' . '<li>' . $document->title . '</li>'.'</a>';
+                echo '<a href=' . app()->route->getUrl('/viewDoc') . '?id=' . $document->id . '>' . '<li>' . $document->title . '</li>'.'</a>';
             }
             ?>
         </ol>
