@@ -20,7 +20,7 @@ use Src\Auth\Auth;
             <?php
             if (app()->auth::check()):
             ?>
-            <p><?= app()->auth::user()->role; ?></p>
+                <a href="<?= app()->route->getUrl('/profile') ?>"><p><?= app()->auth::user()->role; ?></p></a>
             <a href="<?= app()->route->getUrl('/logout') ?>">Выход</a>
             <?php
             endif;
@@ -32,5 +32,8 @@ use Src\Auth\Auth;
 <main>
     <?= $content ?? '' ?>
 </main>
+
 </body>
 </html>
+
+

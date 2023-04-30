@@ -1,3 +1,8 @@
+<?php
+
+use Src\Auth\Auth;
+
+?>
 <div class="Info">
 
     <div>
@@ -23,6 +28,13 @@
 
     </div>
     <img src="../../public/assets/image/книги.jpg" alt="Книги">
+</div>
+<div class="ttt">
+    <p>Текст</p>
+    <?php if (Auth::user()->role === 'Админ'): ?>
+    <a href="<?= app()->route->getUrl('/statusUpdate')  ?>">Изменить статус</a>
+    <?php endif; ?>
+    <a href="<?= app()->route->getUrl('/updateDoc') ?>">Изменить документ</a>
 </div>
 <div class="textdoc">
     <p><?php

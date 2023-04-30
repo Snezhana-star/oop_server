@@ -23,11 +23,37 @@ use Src\Auth\Auth;
     <div class="doc">
         <p>Документы</p>
         <div>
-<!--            --><?php //foreach ($documents as $document)?>
-            <a href="#">Все</a>
-            <a href="#">Статус</a>
-            <a href="#">Подразделение</a>
-            <a href="#">Дисциплины</a>
+
+            <form method="post" class="search">
+                <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+                <a href="<?= app()->route->getUrl('/profile') ?>">Все</a>
+                <label for="status">Статус: </label>
+                <select name="status">
+                    <option value="Новый">Новый</option>
+                    <option value="Одобрено">Одобрено</option>
+                    <option value="Неодобрено">Неодобрено</option>
+                </select>
+
+                <label for="discription">Описание: </label>
+                <select id="discription" name="discription">
+                    <option value="Лекция">Лекция</option>
+                    <option value="Практика">Практика</option>
+                    <option value="Презентация">Презентация</option>
+                </select>
+
+                <label for="subdivision">Подразделение: </label>
+                <select id="subdivision" name="subdivision">
+                    <option value="Филологическое">Филологическое</option>
+                    <option value="Экономическое">Экономическое</option>
+                </select>
+
+                <label for="discipline">Дисциплина: </label>
+                <select id="discipline" name="discipline">
+                    <option value="Философия">Философия</option>
+                    <option value="ЭВМ">ЭВМ</option>
+                </select>
+                <button>Поиск</button>
+            </form>
         </div>
     <div class="list">
         <ol>

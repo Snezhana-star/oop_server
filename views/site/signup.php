@@ -1,8 +1,8 @@
 
-<h3><?= $message ?? ''; ?></h3>
+<h3 class="error"><?= $message ?? ''; ?></h3>
 
 <form class="sign" method="post">
-
+    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <label for="full_name">ФИО </br></label>
     <input type="text" name="full_name">
 
