@@ -9,12 +9,10 @@
 
     <label for="text"> Содержание </br></label>
     <input type="text" name="text">
-
+    
     <label for="status">Статус</br></label>
     <select id="status" name="status">
         <option value="Новый">Новый</option>
-        <option value="Одобрено">Одобрено</option>
-        <option value="Отклонено">Отклонено</option>
     </select>
 
     <label for="date_of_creation">Дата создания </br></label>
