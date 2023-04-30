@@ -1,4 +1,7 @@
 <h3 class="error"><?= $message ?? ''; ?></h3>
+<?php
+//var_dump($authors);
+//?>
 <form class="sign" method="post">
     <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <label for="title">Название </br></label>
@@ -25,21 +28,26 @@
 
 
     <label for="author">Автор</br></label>
-    <select id="author" name="author">
-        <option value="Иванова Ивана Ивановна">Иванова Ивана Ивановна</option>
-        <option value="Эрдэм Алдарович Санжижапов">Эрдэм Алдарович Санжижапов</option>
+    <select name="author">
+        <?php foreach ($authors as $author) { ?>
+            <option value="<?= $author->full_name ?>"><?= $author->full_name ?></option>
+        <?php } ?>
     </select>
 
+
     <label for="subdivision">Подразделение</br></label>
-    <select id="subdivision" name="subdivision">
-        <option value="Филологическое">Филологическое</option>
-        <option value="Экономическое">Экономическое</option>
+    <select name="subdivision">
+        <?php foreach ($subdivisions as $subdivision) { ?>
+            <option value="<?= $subdivision->title ?>"><?= $subdivision->title ?></option>
+        <?php } ?>
     </select>
 
     <label for="discipline">Дисциплина</br></label>
-    <select id="discipline" name="discipline">
-        <option value="Философия">Философия</option>
-        <option value="ЭВМ">ЭВМ</option>
+    <select name="discipline">
+        <?php foreach ($disciplines as $discipline) { ?>
+
+            <option value="<?= $discipline->title ?>"><?= $discipline->title ?></option>
+        <?php } ?>
     </select>
 
 

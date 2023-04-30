@@ -19,16 +19,16 @@
     <input type="text" name="address">
 
     <label for="role">Роль</br></label>
-    <select id="role" name="role">
-        <option value="Админ">Админ</option>
-        <option value="Методист">Методист</option>
-        <option value="Преподаватель">Преподаватель</option>
+    <select name="role">
+        <?php foreach ($roles as $role) { ?>
+            <option value="<?= $role->title ?>"><?= $role->title ?></option>
+        <?php } ?>
     </select>
-
     <label for="subdivision">Подразделение</br></label>
-    <select id="subdivision" name="subdivision">
-        <option value="Филологическое">Филологическое</option>
-        <option value="Экономическое">Экономическое</option>
+    <select name="subdivision">
+        <?php foreach ($subdivisions as $subdivision) { ?>
+            <option value="<?= $subdivision->title ?>"><?= $subdivision->title ?></option>
+        <?php } ?>
     </select>
 
     <label for="login">Логин </br></label>

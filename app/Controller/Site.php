@@ -1,7 +1,10 @@
 <?php
 namespace Controller;
 
+use Model\Discipline;
+use Model\Role;
 use Model\Document;
+use Model\Subdivision;
 use Src\Request;
 use Model\Post;
 use Src\View;
@@ -23,6 +26,8 @@ class Site
     }
     public function signup(Request $request): string
     {
+        $roles=Role::all();
+        $subdivisions=Subdivision::all();
         if ($request->method === 'POST') {
 
             $validator = new Validator($request->all(), [
@@ -41,14 +46,14 @@ class Site
 
             if($validator->fails()){
                 return new View('site.signup',
-                    ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+                    ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE),'roles'=>$roles,'subdivisions'=>$subdivisions]);
             }
 
             if (User::create($request->all())) {
                 app()->route->redirect('/login');
             }
         }
-        return new View('site.signup');
+        return new View('site.signup',['roles'=>$roles, 'subdivisions'=>$subdivisions]);
     }
 
     public function login(Request $request): string
@@ -82,6 +87,10 @@ class Site
     }
     public function createDoc(Request $request): string
         {
+
+            $authors=User::where('role', 'Методист')->get();
+            $disciplines=Discipline::all();
+            $subdivisions=Subdivision::all();
             if ($request->method === 'POST') {
 
                 $validator = new Validator($request->all(), [
@@ -100,44 +109,20 @@ class Site
 
                 if($validator->fails()){
                     return new View('site.createDoc',
-                        ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+                        ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE),'subdivisions'=>$subdivisions,'disciplines'=>$disciplines, 'authors'=>$authors]);
                 }
 
                 if (Document::create($request->all())) {
                     app()->route->redirect('/profile');
                 }
             }
-            return new View('site.createDoc');
+            return new View('site.createDoc', ['subdivisions'=>$subdivisions,'disciplines'=>$disciplines,'authors'=>$authors]);
         }
     public function viewDoc(Request $request): string{
         $viewdocs = Document::where('id', $request->id)->get();
         return (new View())->render('site.viewDoc', ['viewdocs' => $viewdocs]);
     }
 
-//    public function statusUpdate(Request $request): string{
-//
-//
-//            if ($request->method === 'GET') {
-//                $docs = Document::all();
-//            }
-//            if ($request->method === 'POST') {
-//                $validator = new Validator($request->all(), [
-//                    'status' => ['required'],
-//
-//                ], [
-//                    'required' => 'Поле :field пусто'
-//                ]);
-//                if ($validator->fails()) {
-//                    return new View('site.statusUpdate',
-//                        ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
-//                }
-//                $payload = $request->all();
-//                $docs = Document::all()->update($payload);
-//                app()->route->redirect('/viewDoc');
-//            }
-//
-//            return (new View())->render('site.statusUpdate', ['docs' => $docs]);
-//        }
     public function updateDoc(Request $request): string
     {
         if ($request->method === 'GET') {
@@ -150,13 +135,8 @@ class Site
                 'text'=> ['required'],
                 'status'=> ['required'],
                 'date_of_creation'=> ['required'],
-                'subdivision'=> ['required'],
-                'author' => ['required'],
-                'discipline' => ['required'],
             ], [
                 'required' => 'Поле :field пусто',
-                'unique' => 'Поле :field должно быть уникально',
-
             ]);
             if ($validator->fails()) {
                 return new View('site.updateDoc',
