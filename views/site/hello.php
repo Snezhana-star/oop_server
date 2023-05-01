@@ -5,5 +5,5 @@
         <p class="cn">Сервер для предоставления методических, лекционных и практических материалов для преподавателей "ХТИТ"</p>
         <a class="btm" href="<?= app()->route->getUrl('/login') ?>">Войти</a>
     </div>
-    <img src="../../public/assets/image/книги.jpg" alt="Книги">
+    <img src="../../../mvc/public/assets/image/книги.jpg" alt="Книги">
 </div>

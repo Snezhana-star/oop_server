@@ -27,7 +27,7 @@ use Src\Auth\Auth;
 
 
     </div>
-    <img src="../../public/assets/image/книги.jpg" alt="Книги">
+    <img src="../../../mvc/public/assets/image/книги.jpg" alt="Книги">
 </div>
 <div class="ttt">
     <p>Текст</p>

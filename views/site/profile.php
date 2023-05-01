@@ -18,7 +18,7 @@ use Src\Auth\Auth;
         <?php endif; ?>
 
     </div>
-    <img src="../../public/assets/image/книги.jpg" alt="Книги">
+    <img src="../../../mvc/public/assets/image/книги.jpg" alt="Книги">
     </div>
     <div class="doc">
         <p>Документы</p>
@@ -29,6 +29,7 @@ use Src\Auth\Auth;
                 <a href="<?= app()->route->getUrl('/profile') ?>">Все</a>
                 <label for="status">Статус: </label>
                 <select name="status">
+                    <option value="0"> </option>
                     <option value="Новый">Новый</option>
                     <option value="Одобрено">Одобрено</option>
                     <option value="Неодобрено">Неодобрено</option>
@@ -57,6 +58,7 @@ use Src\Auth\Auth;
                 <button>Поиск</button>
             </form>
         </div>
+
     <div class="list">
         <ol>
             <?php

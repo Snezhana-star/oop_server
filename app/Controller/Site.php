@@ -94,7 +94,9 @@ class Site
             $disciplines=Discipline::all();
             $subdivisions=Subdivision::all();
             if ($request->method === 'POST') {
-
+//                if($request->hasFile('image')) {
+//                    $file = $request->file('image');
+//                    $file->move(public_path() . '/path','filename.img');
                 $validator = new Validator($request->all(), [
                     'title' => ['required'],
                     'discription'=> ['required'],
@@ -104,6 +106,7 @@ class Site
                     'subdivision'=> ['required'],
                     'author' => ['required'],
                     'discipline' => ['required'],
+                    'image'
                 ], [
                     'required' => 'Поле :field пусто',
                     'unique' => 'Поле :field должно быть уникально'
