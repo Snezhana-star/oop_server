@@ -15,8 +15,6 @@
         <option value="Презентация">Презентация</option>
     </select>
 
-    <label for="text"> Содержание </br></label>
-    <input type="text" name="text">
     
     <label for="status">Статус</br></label>
     <select id="status" name="status">
@@ -49,7 +47,8 @@
             <option value="<?= $discipline->title ?>"><?= $discipline->title ?></option>
         <?php } ?>
     </select>
-
+    <label  for="text"> Содержание </br></label>
+    <textarea class="textdocument" name="text"></textarea>
 
     <button>Создать</button>
 </form>

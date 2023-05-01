@@ -77,13 +77,15 @@ class Site
     }
     public function profile(Request $request): string
     {
+        $disciplines=Discipline::all();
+        $subdivisions=Subdivision::all();
         if ($request->method==="POST"){
             $documents = Document::where('status', $request->status)->where('discription', $request->discription)->where('subdivision', $request->subdivision)->where('discipline', $request->discipline)->get();
         }else{ $documents = Document::all();}
 
 //        $statusNew = Document::where('status', $request->status)->get();
         $users = User::all();
-        return (new View())->render('site.profile', ['users' => $users,'documents'=>$documents]);
+        return (new View())->render('site.profile', ['users' => $users,'documents'=>$documents, 'disciplines'=>$disciplines, 'subdivisions'=>$subdivisions ]);
     }
     public function createDoc(Request $request): string
         {
@@ -148,6 +150,29 @@ class Site
         }
 
         return (new View())->render('site.updateDoc', ['docs' => $docs]);
+    }
+
+    public function statusUpdate(Request $request): string
+    {
+        if ($request->method === 'GET') {
+            $docs = Document::where('id', $request->id)->first();
+        }
+        if ($request->method === 'POST') {
+            $validator = new Validator($request->all(), [
+                'status'=> ['required'],
+            ], [
+                'required' => 'Поле :field пусто',
+            ]);
+            if ($validator->fails()) {
+                return new View('site.statusUpdate',
+                    ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+            }
+            $payload = $request->all();
+            $docs = Document::where('id', $request->id)->update($payload);
+            app()->route->redirect('/viewDoc');
+        }
+
+        return (new View())->render('site.statusUpdate', ['docs' => $docs]);
     }
 
 }

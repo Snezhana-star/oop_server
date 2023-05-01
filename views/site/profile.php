@@ -42,15 +42,17 @@ use Src\Auth\Auth;
                 </select>
 
                 <label for="subdivision">Подразделение: </label>
-                <select id="subdivision" name="subdivision">
-                    <option value="Филологическое">Филологическое</option>
-                    <option value="Экономическое">Экономическое</option>
+                <select name="subdivision">
+                    <?php foreach ($subdivisions as $subdivision) { ?>
+                        <option value="<?= $subdivision->title ?>"><?= $subdivision->title ?></option>
+                    <?php } ?>
                 </select>
 
                 <label for="discipline">Дисциплина: </label>
-                <select id="discipline" name="discipline">
-                    <option value="Философия">Философия</option>
-                    <option value="ЭВМ">ЭВМ</option>
+                <select name="discipline">
+                    <?php foreach ($disciplines as $discipline) { ?>
+                        <option value="<?= $discipline->title ?>"><?= $discipline->title ?></option>
+                    <?php } ?>
                 </select>
                 <button>Поиск</button>
             </form>

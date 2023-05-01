@@ -14,8 +14,6 @@
         <option value="Презентация">Презентация</option>
     </select>
 
-    <label for="text"> Содержание </br></label>
-    <input type="text" name="text" value="<?= $docs['text'] ?>">
 
     <label for="status">Статус</br></label>
     <select id="status" name="status"">
@@ -25,6 +23,7 @@
     <label for="date_of_creation">Дата создания </br></label>
     <input type="date" name="date_of_creation" value="<?= $docs['date_of_creation'] ?>"  >
 
-
+    <label  for="text"> Содержание </br></label>
+    <textarea class="textdocument" name="text" value="<?= $docs['text'] ?>"></textarea>
     <button>Изменить</button>
 </form>

@@ -31,10 +31,15 @@ use Src\Auth\Auth;
 </div>
 <div class="ttt">
     <p>Текст</p>
-    <?php if (Auth::user()->role === 'Админ'): ?>
-    <a href="<?= app()->route->getUrl('/statusUpdate')  ?>">Изменить статус</a>
+    <?php if (Auth::user()->role === 'Админ'):
+        foreach ($viewdocs as $viewdoc) {
+        echo '<a href=' . app()->route->getUrl('/statusUpdate') . '?id=' . $viewdoc->id . '>'. 'Изменить статус' .'</a>';}?>
     <?php endif; ?>
-    <a href="<?= app()->route->getUrl('/updateDoc') ?>">Изменить документ</a>
+    <?php if (Auth::user()->role === 'Методист'):
+    foreach ($viewdocs as $viewdoc) {
+        echo '<a href=' . app()->route->getUrl('/updateDoc') . '?id=' . $viewdoc->id . '>'. 'Изменить документ' .'</a>';}?>
+    <?php endif; ?>
+
 </div>
 <div class="textdoc">
     <p><?php
