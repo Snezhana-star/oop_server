@@ -24,24 +24,46 @@ class CreateDoc
             $validator = new Validator($request->all(), [
                 'title' => ['required'],
                 'discription' => ['required'],
-                'text' => ['required'],
                 'status' => ['required'],
                 'date_of_creation' => ['required'],
                 'subdivision' => ['required'],
                 'author' => ['required'],
                 'discipline' => ['required'],
-                'image'
+                'file' => ['required'],
             ], [
                 'required' => 'Поле :field пусто',
-                'unique' => 'Поле :field должно быть уникально'
+
             ]);
 
             if ($validator->fails()) {
                 return new View('site.createDoc',
                     ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE), 'subdivisions' => $subdivisions, 'disciplines' => $disciplines, 'authors' => $authors]);
             }
+            $path = '../public/assets/files/';
+            $storage = new \Upload\Storage\FileSystem($path);
+            $file = new \Upload\File('file', $storage);
 
-            if (Document::create($request->all())) {
+            $new_filename = uniqid();
+            $file->setName($new_filename);
+            $file_name = $file->getNameWithExtension($file);
+            try {
+                // Success!
+                $file->upload();
+            } catch (\Exception $e) {
+                // Fail!
+                $errors = $file->getErrors();
+            }
+
+            if (Document::create([
+                'title'=>$request->title,
+                'discription'=>$request->discription,
+                'status'=>$request->status,
+                'date_of_creation'=>$request->date_of_creation,
+                'author'=>$request->author,
+                'subdivision'=>$request->subdivision,
+                'discipline'=>$request->discipline,
+                'file'=>$path.$file_name,
+            ])) {
                 app()->route->redirect('/profile');
             }
         }

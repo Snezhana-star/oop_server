@@ -30,7 +30,11 @@ use Src\Auth\Auth;
     <img src="../../../mvc/public/assets/image/книги.jpg" alt="Книги">
 </div>
 <div class="ttt">
-    <p>Текст</p>
+    <?php
+    foreach ($viewdocs as $viewdoc) {
+        echo '<a target="_blank" href='. 'mvc/' . $viewdoc->file . ' > Скачать </a>';
+    }
+    ?>
     <?php if (Auth::user()->role === 'Админ'):
         foreach ($viewdocs as $viewdoc) {
         echo '<a href=' . app()->route->getUrl('/statusUpdate') . '?id=' . $viewdoc->id . '>'. 'Изменить статус' .'</a>';}?>
@@ -40,12 +44,4 @@ use Src\Auth\Auth;
         echo '<a href=' . app()->route->getUrl('/updateDoc') . '?id=' . $viewdoc->id . '>'. 'Изменить документ' .'</a>';}?>
     <?php endif; ?>
 
-</div>
-<div class="textdoc">
-    <p><?php
-        foreach ($viewdocs as $viewdoc) {
-            echo $viewdoc->text;
-        }
-        ?>
-    </p>
 </div>

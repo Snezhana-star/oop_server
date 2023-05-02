@@ -47,11 +47,9 @@
             <option value="<?= $discipline->title ?>"><?= $discipline->title ?></option>
         <?php } ?>
     </select>
-    <label  for="image"> Картинка </br></label>
-    <input type="file" name="image">
+    <label  for="file"> Документ </br></label>
+    <input type="file" name="file">
 
-    <label  for="text"> Содержание </br></label>
-    <textarea class="textdocument" name="text"></textarea>
 
     <button>Создать</button>
 </form>

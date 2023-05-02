@@ -23,7 +23,8 @@
     <label for="date_of_creation">Дата создания </br></label>
     <input type="date" name="date_of_creation" value="<?= $docs['date_of_creation'] ?>"  >
 
-    <label  for="text"> Содержание </br></label>
-    <textarea class="textdocument" name="text" value="<?= $docs['text'] ?>"></textarea>
+    <label  for="file"> Документ </br></label>
+    <input type="file" name="file">
+
     <button>Изменить</button>
 </form>

@@ -15,12 +15,12 @@ class Document extends Model //implements IdentityInterface
     protected $fillable = [
         'title',
         'discription',
-        'text',
         'status',
         'date_of_creation',
         'author',
         'subdivision',
-        'discipline'
+        'discipline',
+        'file'
     ];
 
     protected static function booted()
