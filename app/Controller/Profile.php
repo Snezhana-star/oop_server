@@ -14,6 +14,7 @@ class Profile
 {
     public function profile(Request $request): string
     {
+        //надо изменить поиск !!!! узнать как удалять файлы ненужные полсе update!!! как-то связать подразделения с преподами!!!!
         $disciplines = Discipline::all();
         $subdivisions = Subdivision::all();
         if ($request->method === "POST") {
