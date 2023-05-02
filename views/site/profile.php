@@ -26,7 +26,14 @@ use Src\Auth\Auth;
 
             <form method="post" class="search">
                 <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+
+                <?php if (Auth::user()->role === 'Методист'): ?>
+                    <a href="<?= app()->route->getUrl('/profile') ?>">Мои</a>
+                <?php else: ?>
+
                 <a href="<?= app()->route->getUrl('/profile') ?>">Все</a>
+                <?php endif; ?>
+                <?php if (Auth::user()->role !== 'Преподаватель'):?>
                 <label for="status">Статус: </label>
                 <select name="status">
                     <option value="0"> </option>
@@ -34,6 +41,7 @@ use Src\Auth\Auth;
                     <option value="Одобрено">Одобрено</option>
                     <option value="Неодобрено">Неодобрено</option>
                 </select>
+                <?php endif; ?>
 
                 <label for="discription">Описание: </label>
                 <select id="discription" name="discription">
@@ -61,10 +69,22 @@ use Src\Auth\Auth;
 
     <div class="list">
         <ol>
-            <?php
+            <?php if (Auth::user()->role === 'Методист'):
             foreach ($documents as $document){
+                if (app()->auth::user()->full_name === $document->author)
                 echo '<a href=' . app()->route->getUrl('/viewDoc') . '?id=' . $document->id . '>' . '<li>' . $document->title . '</li>'.'</a>';
             }
-            ?>
+            endif;?>
+            <?php if (Auth::user()->role === 'Админ'):
+                foreach ($documents as $document){
+                        echo '<a href=' . app()->route->getUrl('/viewDoc') . '?id=' . $document->id . '>' . '<li>' . $document->title . '</li>'.'</a>';
+                }
+            endif;?>
+            <?php if (Auth::user()->role === 'Преподаватель'):
+                foreach ($documents as $document){
+                    if ($document->status === 'Одобрено')
+                    echo '<a href=' . app()->route->getUrl('/viewDoc') . '?id=' . $document->id . '>' . '<li>' . $document->title . '</li>'.'</a>';
+                }
+            endif;?>
         </ol>
     </div>

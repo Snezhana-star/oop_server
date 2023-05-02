@@ -22,7 +22,7 @@ class CreateDoc
         if ($request->method === 'POST') {
 
             $validator = new Validator($request->all(), [
-                'title' => ['required'],
+                'title' => ['required', 'cyrillic'],
                 'discription' => ['required'],
                 'status' => ['required'],
                 'date_of_creation' => ['required'],
@@ -32,6 +32,7 @@ class CreateDoc
                 'file' => ['required'],
             ], [
                 'required' => 'Поле :field пусто',
+                'cyrillic' => 'Поле :field должно состоять из кирилици',
 
             ]);
 

@@ -11,7 +11,9 @@ return [
     ],
     'validators' => [
         'required' => \Validators\RequireValidator::class,
-        'unique' => \Validators\UniqueValidator::class
+        'unique' => \Validators\UniqueValidator::class,
+        'cyrillic' => \Validators\CyrillicValidator::class,
+        'latin' => \Validators\LatinValidator::class,
     ],
     'routeAppMiddleware' => [
         'csrf' => \Middlewares\CSRFMiddleware::class,

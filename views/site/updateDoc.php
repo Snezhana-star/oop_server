@@ -1,5 +1,5 @@
 <h3 class="error"><?= $message ?? ''; ?></h3>
-<form class="sign" method="post">
+<form class="sign" method="post"  enctype="multipart/form-data">
 <!--    <input name="csrf_token" type="hidden" value="--><?php //= app()->auth::generateCSRF() ?><!--"/>-->
     <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
 

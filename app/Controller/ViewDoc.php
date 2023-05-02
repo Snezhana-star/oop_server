@@ -10,7 +10,8 @@ class ViewDoc
 {
     public function viewDoc(Request $request): string
     {
+        $path = '../mvc/public/assets/files/';
         $viewdocs = Document::where('id', $request->id)->get();
-        return (new View())->render('site.viewDoc', ['viewdocs' => $viewdocs]);
+        return (new View())->render('site.viewDoc', ['viewdocs' => $viewdocs,'path' => $path]);
     }
 }

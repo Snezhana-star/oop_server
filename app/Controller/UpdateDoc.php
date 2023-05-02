@@ -15,8 +15,9 @@ class UpdateDoc
             $docs = Document::where('id', $request->id)->first();
         }
         if ($request->method === 'POST') {
+            $docs = Document::where('id', $request->id)->first();
             $validator = new Validator($request->all(), [
-                'title' => ['required'],
+                'title' => ['required', 'cyrillic'],
                 'discription' => ['required'],
                 'file' => ['required'],
                 'status' => ['required'],
@@ -24,17 +25,19 @@ class UpdateDoc
 
             ], [
                 'required' => 'Поле :field пусто',
+                'cyrillic' => 'Поле :field должно состоять из кирилици',
             ]);
             if ($validator->fails()) {
                 return new View('site.updateDoc',
                     ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
             }
+
             $path = '../public/assets/files/';
             $storage = new \Upload\Storage\FileSystem($path);
             $file = new \Upload\File('file', $storage);
 
             $new_filename = uniqid();
-            $file->setName($docs->file);
+            $file->setName($new_filename);
             $file_name = $file->getNameWithExtension($file);
             try {
                 // Success!
@@ -50,6 +53,9 @@ class UpdateDoc
                 'discription' => $request->discription,
                 'status' => $request->status,
                 'date_of_creation' => $request->date_of_creation,
+                'file' => $path.$file_name,
+
+
             ]);
             app()->route->redirect('/viewDoc?id='.$request->id);
         }

@@ -32,7 +32,7 @@ use Src\Auth\Auth;
 <div class="ttt">
     <?php
     foreach ($viewdocs as $viewdoc) {
-        echo '<a target="_blank" href='. 'mvc/' . $viewdoc->file . ' > Скачать </a>';
+        echo '<a target="_blank" href=mvc/'. $viewdoc->file . '> Скачать </a>';
     }
     ?>
     <?php if (Auth::user()->role === 'Админ'):
