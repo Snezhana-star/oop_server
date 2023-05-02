@@ -2,7 +2,7 @@
 <?php
 //var_dump($authors);
 //?>
-<form class="sign" method="post"  action="" enctype="multipart/form-data">
+<form class="sign" method="post"  enctype="multipart/form-data">
     <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <label for="title">Название </br></label>
     <input type="text" name="title">
@@ -47,8 +47,8 @@
             <option value="<?= $discipline->title ?>"><?= $discipline->title ?></option>
         <?php } ?>
     </select>
-<!--    <label  for="image"> Картинка </br></label>-->
-<!--    <input type="file" name="image">-->
+    <label  for="image"> Картинка </br></label>
+    <input type="file" name="image">
 
     <label  for="text"> Содержание </br></label>
     <textarea class="textdocument" name="text"></textarea>
