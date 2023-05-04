@@ -35,8 +35,8 @@ use Src\Auth\Auth;
                 <?php endif; ?>
                 <?php if (Auth::user()->role !== 'Преподаватель'):?>
                 <label for="status">Статус: </label>
-                <select name="status">
-                    <option value="0"> </option>
+                <select name="filters[status]">
+                    <option value="default"> </option>
                     <option value="Новый">Новый</option>
                     <option value="Одобрено">Одобрено</option>
                     <option value="Неодобрено">Неодобрено</option>
@@ -44,21 +44,24 @@ use Src\Auth\Auth;
                 <?php endif; ?>
 
                 <label for="discription">Описание: </label>
-                <select id="discription" name="discription">
+                <select id="discription" name="filters[discription]">
+                    <option value="default"> </option>
                     <option value="Лекция">Лекция</option>
                     <option value="Практика">Практика</option>
                     <option value="Презентация">Презентация</option>
                 </select>
 
                 <label for="subdivision">Подразделение: </label>
-                <select name="subdivision">
+                <select name="filters[subdivision]">
+                    <option value="default"> </option>
                     <?php foreach ($subdivisions as $subdivision) { ?>
                         <option value="<?= $subdivision->title ?>"><?= $subdivision->title ?></option>
                     <?php } ?>
                 </select>
 
                 <label for="discipline">Дисциплина: </label>
-                <select name="discipline">
+                <select name="filters[discipline]">
+                    <option value="default"> </option>
                     <?php foreach ($disciplines as $discipline) { ?>
                         <option value="<?= $discipline->title ?>"><?= $discipline->title ?></option>
                     <?php } ?>

@@ -40,24 +40,21 @@ class UpdateDoc
             $file->setName($new_filename);
             $file_name = $file->getNameWithExtension($file);
             try {
-                // Success!
+                $old_file = Document::where('id', $request->id)->get('file');
+                unlink('../../../mvc/public/assets/files/'.$old_file);
                 $file->upload();
             } catch (\Exception $e) {
-                // Fail!
                 $errors = $file->getErrors();
             }
-
 
             $docs = Document::where('id', $request->id)->update([
                 'title' => $request->title,
                 'discription' => $request->discription,
                 'status' => $request->status,
                 'date_of_creation' => $request->date_of_creation,
-                'file' => $path.$file_name,
-
-
+                'file' => $path . $file_name,
             ]);
-            app()->route->redirect('/viewDoc?id='.$request->id);
+            app()->route->redirect('/viewDoc?id=' . $request->id);
         }
 
         return (new View())->render('site.updateDoc', ['docs' => $docs]);

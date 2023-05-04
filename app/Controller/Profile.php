@@ -14,11 +14,14 @@ class Profile
 {
     public function profile(Request $request): string
     {
-        //надо изменить поиск !!!! узнать как удалять файлы ненужные полсе update!!! как-то связать подразделения с преподами!!!!
         $disciplines = Discipline::all();
         $subdivisions = Subdivision::all();
         if ($request->method === "POST") {
-            $documents = Document::where('status', $request->status)->where('discription', $request->discription)->where('subdivision', $request->subdivision)->where('discipline', $request->discipline)->get();
+            $filters = $request->filters;
+            $filters = array_filter($filters, function ($item) {
+                return $item!=='default';
+            });
+            $documents = Document::where($filters)->get();
         } else {
             $documents = Document::all();
         }
