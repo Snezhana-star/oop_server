@@ -19,7 +19,8 @@ class User extends Model implements IdentityInterface
         'role',
         'subdivision',
         'login',
-        'password'
+        'password',
+        'token'
     ];
 
     protected static function booted()
@@ -53,5 +54,14 @@ class User extends Model implements IdentityInterface
     }
     public function hasRole($roles): bool{
          return in_array($this->role, $roles);
+    }
+    public function getToken()
+    {
+        if(app()->auth::user()->token){
+            $token = app()->auth::user()->token;
+        }else{
+            $token = null;
+        }
+        return $token;
     }
 }
